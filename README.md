@@ -15,20 +15,15 @@ sudo docker run -d -p 15672:15672 -p 5672:5672 --restart=always --name RabbitMQ 
 
 3.you should create two queues in rabbitMQ with names: replies and requests
 
-4.you should create database "remote-chunk" in postgresql
+4.you should create database "remote-chunk" in sqlserver
 
-5.and create table "transaction" with sql code :
+5.and create table "info" with sql code :
 
-CREATE TABLE IF NOT EXISTS public.transaction
-
-(
-
-account character varying COLLATE pg_catalog."default",
-
-amount character varying COLLATE pg_catalog."default",
-
-"timestamp" character varying COLLATE pg_catalog."default"
-
+CREATE TABLE IF NOT EXISTS info (
+id bigint primary key,
+account varchar(50) ,
+amount varchar(50) ,
+timestamp varchar(50)
 )
 
 6.run master-remote-chunking
